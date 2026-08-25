@@ -363,14 +363,17 @@
     padding: var(--space-md) var(--space-md);
   }
   .parallel-layout {
-    flex-direction: column-reverse;
+    flex-direction: column; /* Fixed: normal column instead of column-reverse to prevent top-clipping on overflow */
     margin-bottom: 80px;
     gap: var(--space-lg);
     overflow-y: auto;
-    padding-top: var(--space-xl); /* Fix for top clipping */
+    padding-top: var(--space-xl);
     padding-bottom: var(--space-xl);
-    padding-left: var(--space-sm); /* Extra padding for left shadow */
+    padding-left: var(--space-sm);
     padding-right: var(--space-sm);
+  }
+  .layout-right {
+    order: -1; /* visually at top */
   }
   .layout-left {
     overflow-y: visible;
@@ -378,11 +381,20 @@
   .title-area h2 {
     font-size: 28px;
   }
+  .mic-showcase {
+    padding: 30px; /* Reduce padding to save vertical space on mobile */
+  }
   .bottom-nav {
     bottom: var(--space-sm);
     left: var(--space-sm);
     right: var(--space-sm);
     box-shadow: 0 -4px 20px rgba(0,0,0,0.05), var(--shadow-neu);
+    gap: 8px; /* space between nav buttons */
+    justify-content: space-evenly;
+  }
+  .nav-btn {
+    flex: 1;
+    max-width: 100px; /* prevent overly wide buttons */
   }
   .mic-ring {
     width: 160px;
